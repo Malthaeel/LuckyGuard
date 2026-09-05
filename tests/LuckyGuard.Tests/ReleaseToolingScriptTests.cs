@@ -53,6 +53,21 @@ public sealed class ReleaseToolingScriptTests
         Assert.Contains("Manifest SHA-256 mismatch", generator, StringComparison.Ordinal);
     }
 
+    [Fact]
+    public void PublicPowerShellEntryPoints_AreAsciiSafeForWindowsPowerShell51()
+    {
+        string root = FindRepositoryRoot();
+        IEnumerable<string> scripts = Directory.EnumerateFiles(Path.Combine(root, "scripts"), "*.ps1", SearchOption.TopDirectoryOnly)
+            .Append(Path.Combine(root, "install.ps1"));
+
+        foreach (string script in scripts)
+        {
+            string content = File.ReadAllText(script);
+            char? nonAscii = content.FirstOrDefault(ch => ch > 0x7F);
+            Assert.False(nonAscii.HasValue && nonAscii.Value > 0x7F, $"PowerShell 5.1 public script contains non-ASCII character U+{(int)(nonAscii ?? '\0'):X4}: {script}");
+        }
+    }
+
     private static string Normalize(string value) => value.Replace("\r\n", "\n", StringComparison.Ordinal);
 
     private static string FindRepositoryRoot()

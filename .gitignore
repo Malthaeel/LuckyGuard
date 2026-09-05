@@ -25,7 +25,6 @@ coverage/
 .vscode/
 .idea/
 _ReSharper*/
-*.suo
 *.user
 *.rsuser
 *.userosscache

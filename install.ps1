@@ -82,7 +82,7 @@ try {
         if ($installerDigestMatch.Success -and $installerDigestMatch.Groups[1].Value.ToLowerInvariant() -ne $actual) { throw 'GitHub release asset digest does not match the downloaded installer.' }
         if ($hashDigestMatch.Success -and $hashDigestMatch.Groups[1].Value.ToLowerInvariant() -ne $hashAssetActual) { throw 'GitHub release asset digest does not match SHA256SUMS.txt.' }
     }
-    Good ("SHA-256 " + $actual.Substring(0,16) + '…')
+    Good ("SHA-256 " + $actual.Substring(0,16) + '...')
 
     Step 'Verifying Authenticode signature'
     $signature = Get-AuthenticodeSignature -LiteralPath $installer

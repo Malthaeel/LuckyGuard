@@ -99,6 +99,17 @@ try {
     if(-not $trustScript.Contains('www.virustotal.com/gui/file/$sha')) { throw 'Trust evidence is missing VirusTotal SHA-256 lookup URLs.' }
     if(-not $trustScript.Contains('Get-AuthenticodeSignature')) { throw 'Trust evidence is missing Authenticode verification.' }
     Write-Host 'Release tooling smoke test: PASS (release trust evidence + VirusTotal transparency wiring)'
+
+    # Public PowerShell entrypoints must remain ASCII-safe for Windows PowerShell 5.1.
+    $publicPowerShellScripts = @((Join-Path $repoRoot 'install.ps1')) + @(Get-ChildItem -LiteralPath (Join-Path $repoRoot 'scripts') -Filter '*.ps1' -File | ForEach-Object { $_.FullName })
+    foreach($scriptPath in $publicPowerShellScripts) {
+        $scriptText = Get-Content -LiteralPath $scriptPath -Raw
+        foreach($ch in $scriptText.ToCharArray()) {
+            if([int][char]$ch -gt 127) { throw "Windows PowerShell 5.1 ASCII compatibility regression in $scriptPath (U+$(([int][char]$ch).ToString('X4')))." }
+        }
+    }
+    Write-Host 'Release tooling smoke test: PASS (Windows PowerShell 5.1 ASCII-safe public scripts)'
+
 }
 finally {
     if (Test-Path -LiteralPath $tempRoot) {
