@@ -1,6 +1,6 @@
 # LuckyGuard public release model
 
-LuckyGuard 1.0.0-rc.5 is the final public-release candidate before the stable 1.0 tag.
+LuckyGuard 1.0.0-rc.6 is the final public-release candidate before the stable 1.0 tag.
 
 ## Public-ready gates
 

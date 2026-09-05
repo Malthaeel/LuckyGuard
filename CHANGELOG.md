@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.0-rc.6
+
+- Hotfixed `ReleaseToolingScriptTests.cs` so the public-repository PEM ignore regression checks the `*.pem` ignore rule directly instead of embedding a newline-sensitive string literal.
+- Restores test-project compilation after the RC5 repository-hygiene changes.
+- No production detection/remediation behavior changed; this is a test/release-quality hotfix.
+
 ## 1.0.0-rc.5
 
 - Hardened `.gitignore` for generated output, IDE state, diagnostics, credentials, signing containers and stale phase-plan artifacts.

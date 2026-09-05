@@ -35,8 +35,7 @@ public sealed class ReleaseToolingScriptTests
 
         Assert.Contains("*.cmd text eol=crlf", attributes, StringComparison.Ordinal);
         Assert.Contains("* text=auto eol=lf", attributes, StringComparison.Ordinal);
-        Assert.DoesNotContain("*.pem
-", gitignore, StringComparison.Ordinal); // public IOC verification key must remain trackable
+        Assert.DoesNotContain("*.pem", gitignore, StringComparison.Ordinal); // public IOC verification key must remain trackable
     }
 
     [Fact]

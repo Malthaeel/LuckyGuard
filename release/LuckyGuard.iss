@@ -1,5 +1,5 @@
 #ifndef MyAppVersion
-  #define MyAppVersion "1.0.0-rc.5"
+  #define MyAppVersion "1.0.0-rc.6"
 #endif
 #ifndef PayloadDir
   #define PayloadDir "..\\artifacts\\release\\payload"
