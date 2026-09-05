@@ -7,7 +7,7 @@
 
 **LuckyGuard is a terminal-first Windows security toolkit focused on detecting, containing and recovering from LuckyWare-related compromise.**
 
-> Current source release candidate: **1.0.0-rc.6**  
+> Current source release candidate: **1.0.0-rc.7**  
 > Stable signed binary release: **not published yet**  
 > Official repository: **https://github.com/Malthaeel/LuckyGuard**
 

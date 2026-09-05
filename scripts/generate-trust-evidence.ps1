@@ -49,7 +49,7 @@ foreach ($pkg in @($manifest.packages)) {
         if ($sig.Status -eq 'Valid' -and $sig.SignerCertificate) {
             $subject = [string]$sig.SignerCertificate.Subject
             $subject = $subject.Replace('|','\|')
-            $auth = "Valid — $subject"
+            $auth = "Valid - $subject"
         } else {
             $auth = [string]$sig.Status
         }

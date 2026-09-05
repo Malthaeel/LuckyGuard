@@ -10,7 +10,7 @@ body:
     id: version
     attributes:
       label: LuckyGuard version
-      placeholder: "1.0.0-rc.6"
+      placeholder: "1.0.0-rc.7"
     validations:
       required: true
   - type: textarea

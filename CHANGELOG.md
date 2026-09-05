@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.0-rc.7
+
+- Fixed Windows PowerShell 5.1 parsing of `generate-trust-evidence.ps1` by removing a non-ASCII em dash from executable script source.
+- Normalized the public installer bootstrap to ASCII-safe punctuation as well.
+- Added xUnit and release-tooling regressions that reject non-ASCII characters in public `.ps1` entrypoints used by Windows PowerShell 5.1.
+- Release packaging must now reach trust-evidence generation before RC artifacts are considered publishable.
+
 ## 1.0.0-rc.6
 
 - Hotfixed `ReleaseToolingScriptTests.cs` so the public-repository PEM ignore regression checks the `*.pem` ignore rule directly instead of embedding a newline-sensitive string literal.
