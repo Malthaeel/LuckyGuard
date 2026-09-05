@@ -1,0 +1,19 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
+    <Product>LuckyGuard</Product>
+    <Company>LuckyGuard Project</Company>
+    <Authors>LuckyGuard Contributors</Authors>
+    <Description>Terminal-first Windows LuckyWare protection and remediation toolkit.</Description>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionSuffix>rc.2</VersionSuffix>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <InformationalVersion>1.0.0-rc.4</InformationalVersion>
+  </PropertyGroup>
+</Project>

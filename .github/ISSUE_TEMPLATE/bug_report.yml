@@ -1,0 +1,28 @@
+name: Bug report
+description: Report a reproducible LuckyGuard defect
+title: "[Bug] "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: "Do not attach live malware, credentials, tokens, or private quarantine contents."
+  - type: input
+    id: version
+    attributes:
+      label: LuckyGuard version
+      placeholder: "1.0.0-rc.4"
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction steps
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Sanitized terminal output
+      description: Remove usernames, secrets and unrelated private paths if needed.
+    validations:
+      required: true

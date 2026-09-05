@@ -1,0 +1,6 @@
+{
+  "Endpoint": "https://YOUR-REGION.codesigning.azure.net",
+  "CodeSigningAccountName": "YOUR-ACCOUNT-NAME",
+  "CertificateProfileName": "YOUR-CERTIFICATE-PROFILE",
+  "CorrelationId": "LuckyGuard-release"
+}

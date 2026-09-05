@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>LuckyGuard</AssemblyName>
+    <RootNamespace>LuckyGuard.Cli</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LuckyGuard.Core\LuckyGuard.Core.csproj" />
+    <ProjectReference Include="..\LuckyGuard.Detection\LuckyGuard.Detection.csproj" />
+    <ProjectReference Include="..\LuckyGuard.Ioc\LuckyGuard.Ioc.csproj" />
+    <ProjectReference Include="..\LuckyGuard.Reporting\LuckyGuard.Reporting.csproj" />
+    <ProjectReference Include="..\LuckyGuard.Solution\LuckyGuard.Solution.csproj" />
+    <ProjectReference Include="..\LuckyGuard.PE\LuckyGuard.PE.csproj" />
+    <ProjectReference Include="..\LuckyGuard.Suo\LuckyGuard.Suo.csproj" />
+    <ProjectReference Include="..\LuckyGuard.SDK\LuckyGuard.SDK.csproj" />
+    <ProjectReference Include="..\LuckyGuard.Windows\LuckyGuard.Windows.csproj" />
+    <ProjectReference Include="..\LuckyGuard.Quarantine\LuckyGuard.Quarantine.csproj" />
+    <ProjectReference Include="..\LuckyGuard.Remediation\LuckyGuard.Remediation.csproj" />
+    <ProjectReference Include="..\LuckyGuard.Defender\LuckyGuard.Defender.csproj" />
+    <ProjectReference Include="..\LuckyGuard.Guard\LuckyGuard.Guard.csproj" />
+    <ProjectReference Include="..\LuckyGuard.Archive\LuckyGuard.Archive.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\rules\luckyware\ioc-feed.json" Link="rules\luckyware\ioc-feed.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\rules\luckyware\ioc-feed.sig" Link="rules\luckyware\ioc-feed.sig" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\rules\luckyware\ioc-public-key.pem" Link="rules\luckyware\ioc-public-key.pem" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\config\public-release.json" Link="config\public-release.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

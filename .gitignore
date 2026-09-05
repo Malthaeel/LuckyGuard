@@ -1,0 +1,18 @@
+bin/
+obj/
+.vs/
+.idea/
+*.user
+*.suo
+TestResults/
+artifacts/
+*.log
+
+# Signing credentials / local release metadata
+*.pfx
+*.p12
+*.pvk
+*.key
+*.snk
+release/metadata.json
+release/artifact-signing.metadata.json

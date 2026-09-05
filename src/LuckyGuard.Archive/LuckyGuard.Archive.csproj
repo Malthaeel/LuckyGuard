@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><RootNamespace>LuckyGuard.Archive</RootNamespace></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LuckyGuard.Core\LuckyGuard.Core.csproj" />
+    <ProjectReference Include="..\LuckyGuard.Ioc\LuckyGuard.Ioc.csproj" />
+    <ProjectReference Include="..\LuckyGuard.PE\LuckyGuard.PE.csproj" />
+    <ProjectReference Include="..\LuckyGuard.Source\LuckyGuard.Source.csproj" />
+  </ItemGroup>
+</Project>

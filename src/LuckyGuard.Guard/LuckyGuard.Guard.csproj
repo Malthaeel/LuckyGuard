@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>LuckyGuard.Guard</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LuckyGuard.Core\LuckyGuard.Core.csproj" />
+    <ProjectReference Include="..\LuckyGuard.Detection\LuckyGuard.Detection.csproj" />
+    <ProjectReference Include="..\LuckyGuard.Ioc\LuckyGuard.Ioc.csproj" />
+    <ProjectReference Include="..\LuckyGuard.MSBuild\LuckyGuard.MSBuild.csproj" />
+    <ProjectReference Include="..\LuckyGuard.Source\LuckyGuard.Source.csproj" />
+    <ProjectReference Include="..\LuckyGuard.PE\LuckyGuard.PE.csproj" />
+    <ProjectReference Include="..\LuckyGuard.Archive\LuckyGuard.Archive.csproj" />
+    <ProjectReference Include="..\LuckyGuard.Suo\LuckyGuard.Suo.csproj" />
+    <ProjectReference Include="..\LuckyGuard.Solution\LuckyGuard.Solution.csproj" />
+    <ProjectReference Include="..\LuckyGuard.Windows\LuckyGuard.Windows.csproj" />
+  </ItemGroup>
+</Project>

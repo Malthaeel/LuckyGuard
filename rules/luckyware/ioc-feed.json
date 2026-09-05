@@ -1,0 +1,286 @@
+{
+  "schemaVersion": 1,
+  "feedVersion": "2026.09.04-phase4",
+  "generatedAtUtc": "2026-09-04T00:00:00Z",
+  "entries": [
+    {
+      "id": "lw-domain-luckyware-cy",
+      "type": "Domain",
+      "value": "luckyware.cy",
+      "confidence": "Confirmed",
+      "source": "https://rfdhaikal-wizz.pro/blogs/blog-9.html",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Observed as active C2 during independent runtime analysis."
+    },
+    {
+      "id": "lw-sha256-runtime-1",
+      "type": "Sha256",
+      "value": "9115c69843820f1a93b137bf6eab805294d61bfee04b971b7df01de2c927a12b",
+      "confidence": "Confirmed",
+      "source": "https://rfdhaikal-wizz.pro/blogs/blog-9.html",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Runtime-analyzed loader or C2-delivered stage."
+    },
+    {
+      "id": "lw-sha256-runtime-2",
+      "type": "Sha256",
+      "value": "4fbb21606defa6b48c06fb9a3a0d13075dec0846298443bd74a2e58212dab495",
+      "confidence": "Confirmed",
+      "source": "https://rfdhaikal-wizz.pro/blogs/blog-9.html",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Runtime-analyzed loader or C2-delivered stage."
+    },
+    {
+      "id": "lw-sha256-runtime-3",
+      "type": "Sha256",
+      "value": "2c197a5aa1cc6ab9f04b5f9cd384d583141658859f1efc0f7726cb3c6536ba5d",
+      "confidence": "Confirmed",
+      "source": "https://rfdhaikal-wizz.pro/blogs/blog-9.html",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Runtime-analyzed loader or C2-delivered stage."
+    },
+    {
+      "id": "lw-sha256-runtime-4",
+      "type": "Sha256",
+      "value": "9a401f42467db35d1f014625768642e87467f1123c2f86c5fadf7ada358be96f",
+      "confidence": "Confirmed",
+      "source": "https://rfdhaikal-wizz.pro/blogs/blog-9.html",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Runtime-analyzed loader or C2-delivered stage."
+    },
+    {
+      "id": "lw-domain-i-like-boats",
+      "type": "Domain",
+      "value": "i-like.boats",
+      "confidence": "Community",
+      "source": "https://github.com/metixud/Antiluckyware",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Community-maintained LuckyWare-associated blocklist; requires contextual correlation."
+    },
+    {
+      "id": "lw-domain-powercat-dog",
+      "type": "Domain",
+      "value": "powercat.dog",
+      "confidence": "Community",
+      "source": "https://github.com/metixud/Antiluckyware",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Community-maintained LuckyWare-associated blocklist; requires contextual correlation."
+    },
+    {
+      "id": "lw-domain-devruntime-cy",
+      "type": "Domain",
+      "value": "devruntime.cy",
+      "confidence": "Community",
+      "source": "https://github.com/metixud/Antiluckyware",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Community-maintained LuckyWare-associated blocklist; requires contextual correlation."
+    },
+    {
+      "id": "lw-domain-zetolacs-cloud-top",
+      "type": "Domain",
+      "value": "zetolacs-cloud.top",
+      "confidence": "Community",
+      "source": "https://github.com/metixud/Antiluckyware",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Community-maintained LuckyWare-associated blocklist; requires contextual correlation."
+    },
+    {
+      "id": "lw-domain-frozi-cc",
+      "type": "Domain",
+      "value": "frozi.cc",
+      "confidence": "Community",
+      "source": "https://github.com/metixud/Antiluckyware",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Community-maintained LuckyWare-associated blocklist; requires contextual correlation."
+    },
+    {
+      "id": "lw-domain-exo-api-tf",
+      "type": "Domain",
+      "value": "exo-api.tf",
+      "confidence": "Community",
+      "source": "https://github.com/metixud/Antiluckyware",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Community-maintained LuckyWare-associated blocklist; requires contextual correlation."
+    },
+    {
+      "id": "lw-domain-nuzzyservices-com",
+      "type": "Domain",
+      "value": "nuzzyservices.com",
+      "confidence": "Community",
+      "source": "https://github.com/metixud/Antiluckyware",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Community-maintained LuckyWare-associated blocklist; requires contextual correlation."
+    },
+    {
+      "id": "lw-domain-darkside-cy",
+      "type": "Domain",
+      "value": "darkside.cy",
+      "confidence": "Community",
+      "source": "https://github.com/metixud/Antiluckyware",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Community-maintained LuckyWare-associated blocklist; requires contextual correlation."
+    },
+    {
+      "id": "lw-domain-balista-lol",
+      "type": "Domain",
+      "value": "balista.lol",
+      "confidence": "Community",
+      "source": "https://github.com/metixud/Antiluckyware",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Community-maintained LuckyWare-associated blocklist; requires contextual correlation."
+    },
+    {
+      "id": "lw-domain-phobos-top",
+      "type": "Domain",
+      "value": "phobos.top",
+      "confidence": "Community",
+      "source": "https://github.com/metixud/Antiluckyware",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Community-maintained LuckyWare-associated blocklist; requires contextual correlation."
+    },
+    {
+      "id": "lw-domain-phobosransom-com",
+      "type": "Domain",
+      "value": "phobosransom.com",
+      "confidence": "Community",
+      "source": "https://github.com/metixud/Antiluckyware",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Community-maintained LuckyWare-associated blocklist; requires contextual correlation."
+    },
+    {
+      "id": "lw-domain-pee-files-nl",
+      "type": "Domain",
+      "value": "pee-files.nl",
+      "confidence": "Community",
+      "source": "https://github.com/metixud/Antiluckyware",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Community-maintained LuckyWare-associated blocklist; requires contextual correlation."
+    },
+    {
+      "id": "lw-domain-vcc-library-uk",
+      "type": "Domain",
+      "value": "vcc-library.uk",
+      "confidence": "Community",
+      "source": "https://github.com/metixud/Antiluckyware",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Community-maintained LuckyWare-associated blocklist; requires contextual correlation."
+    },
+    {
+      "id": "lw-domain-luckyware-co",
+      "type": "Domain",
+      "value": "luckyware.co",
+      "confidence": "Community",
+      "source": "https://github.com/metixud/Antiluckyware",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Community-maintained LuckyWare-associated blocklist; requires contextual correlation."
+    },
+    {
+      "id": "lw-domain-luckyware-cc",
+      "type": "Domain",
+      "value": "luckyware.cc",
+      "confidence": "Community",
+      "source": "https://github.com/metixud/Antiluckyware",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Community-maintained LuckyWare-associated blocklist; requires contextual correlation."
+    },
+    {
+      "id": "lw-domain-luckyware-pw",
+      "type": "Domain",
+      "value": "luckyware.pw",
+      "confidence": "Community",
+      "source": "https://github.com/metixud/Antiluckyware",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Community-maintained LuckyWare-associated blocklist; requires contextual correlation."
+    },
+    {
+      "id": "lw-domain-dhszo-darkside-cy",
+      "type": "Domain",
+      "value": "dhszo.darkside.cy",
+      "confidence": "Community",
+      "source": "https://github.com/metixud/Antiluckyware",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Community-maintained LuckyWare-associated blocklist; requires contextual correlation."
+    },
+    {
+      "id": "lw-domain-risesmp-net",
+      "type": "Domain",
+      "value": "risesmp.net",
+      "confidence": "Community",
+      "source": "https://github.com/metixud/Antiluckyware",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Community-maintained LuckyWare-associated blocklist; requires contextual correlation."
+    },
+    {
+      "id": "lw-domain-luckystrike-pw",
+      "type": "Domain",
+      "value": "luckystrike.pw",
+      "confidence": "Community",
+      "source": "https://github.com/metixud/Antiluckyware",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Community-maintained LuckyWare-associated blocklist; requires contextual correlation."
+    },
+    {
+      "id": "lw-domain-krispykreme-top",
+      "type": "Domain",
+      "value": "krispykreme.top",
+      "confidence": "Community",
+      "source": "https://github.com/metixud/Antiluckyware",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Community-maintained LuckyWare-associated blocklist; requires contextual correlation."
+    },
+    {
+      "id": "lw-domain-vcc-redistrbutable-help",
+      "type": "Domain",
+      "value": "vcc-redistrbutable.help",
+      "confidence": "Community",
+      "source": "https://github.com/metixud/Antiluckyware",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Community-maintained LuckyWare-associated blocklist; requires contextual correlation."
+    },
+    {
+      "id": "lw-domain-i-slept-with-ur-mom",
+      "type": "Domain",
+      "value": "i-slept-with-ur.mom",
+      "confidence": "Community",
+      "source": "https://github.com/metixud/Antiluckyware",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Community-maintained LuckyWare-associated blocklist; requires contextual correlation."
+    },
+    {
+      "id": "lw-ip-community-91-92-243-218",
+      "type": "IpAddress",
+      "value": "91.92.243.218",
+      "confidence": "Community",
+      "source": "https://github.com/metixud/Antiluckyware",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Community-maintained IP indicator; IP ownership/reuse may change over time."
+    },
+    {
+      "id": "lw-file-berok-exe",
+      "type": "FileName",
+      "value": "Berok.exe",
+      "confidence": "Community",
+      "source": "https://github.com/metixud/Antiluckyware",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Filename-only indicator; never sufficient on its own to prove infection."
+    },
+    {
+      "id": "lw-file-retev-exe",
+      "type": "FileName",
+      "value": "Retev.exe",
+      "confidence": "Community",
+      "source": "https://github.com/metixud/Antiluckyware",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Filename-only indicator; never sufficient on its own to prove infection."
+    },
+    {
+      "id": "lw-file-retev-php",
+      "type": "FileName",
+      "value": "Retev.php",
+      "confidence": "Community",
+      "source": "https://github.com/metixud/Antiluckyware",
+      "lastVerified": "2026-09-04T00:00:00Z",
+      "notes": "Filename-only indicator; never sufficient on its own to prove infection."
+    }
+  ]
+}

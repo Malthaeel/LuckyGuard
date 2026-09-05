@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>LuckyGuardService</AssemblyName>
+    <RootNamespace>LuckyGuard.ServiceHost</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LuckyGuard.Guard\LuckyGuard.Guard.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\rules\luckyware\ioc-feed.json" Link="rules\luckyware\ioc-feed.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\rules\luckyware\ioc-feed.sig" Link="rules\luckyware\ioc-feed.sig" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\rules\luckyware\ioc-public-key.pem" Link="rules\luckyware\ioc-public-key.pem" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "scan": {
+    "maxFileBytes": 268435456,
+    "maxFiles": 250000,
+    "followReparsePoints": false,
+    "ignoreInaccessible": true
+  },
+  "reporting": {
+    "defaultFormat": "text",
+    "includeEvidence": true
+  }
+}

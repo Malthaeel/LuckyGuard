@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\LuckyGuard.Core\LuckyGuard.Core.csproj" />
+    <ProjectReference Include="..\LuckyGuard.MSBuild\LuckyGuard.MSBuild.csproj" />
+    <ProjectReference Include="..\LuckyGuard.Source\LuckyGuard.Source.csproj" />
+  </ItemGroup>
+</Project>

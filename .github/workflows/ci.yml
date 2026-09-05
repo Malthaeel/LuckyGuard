@@ -1,0 +1,47 @@
+name: LuckyGuard CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows-build-test:
+    name: Windows / .NET 9
+    runs-on: windows-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup .NET 9
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Restore
+        run: dotnet restore .\LuckyGuard.sln
+
+      - name: Build Release
+        run: dotnet build .\LuckyGuard.sln -c Release --no-restore
+
+      - name: Test Release
+        run: dotnet test .\tests\LuckyGuard.Tests\LuckyGuard.Tests.csproj -c Release --no-build --no-restore --logger "trx;LogFileName=luckyguard-tests.trx"
+
+      - name: Release tooling smoke
+        shell: pwsh
+        run: .\scripts\test-release-tooling.ps1
+
+      - name: Upload test results on failure
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: luckyguard-test-results
+          path: '**/TestResults/*.trx'
+          if-no-files-found: ignore

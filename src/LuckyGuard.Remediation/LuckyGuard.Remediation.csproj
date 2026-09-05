@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\LuckyGuard.Core\LuckyGuard.Core.csproj" />
+    <ProjectReference Include="..\LuckyGuard.Quarantine\LuckyGuard.Quarantine.csproj" />
+  </ItemGroup>
+</Project>
