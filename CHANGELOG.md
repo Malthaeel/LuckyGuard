@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.0.0-rc.5
+
+- Hardened `.gitignore` for generated output, IDE state, diagnostics, credentials, signing containers and stale phase-plan artifacts.
+- Added `.gitattributes` to normalize line endings and remove mass LF/CRLF noise on Windows.
+- Rebuilt the public README around trust, release verification, transparent antivirus/false-positive handling and official distribution boundaries.
+- Added `docs/TRUST_AND_VERIFICATION.md`.
+- Added release-time `TRUST-EVIDENCE.md` generation with final SHA-256, Authenticode status and VirusTotal hash lookup URLs.
+- GitHub publisher now uploads and digest-verifies `TRUST-EVIDENCE.md` with each release.
+- Added public-repository sanitize tooling for accidentally tracked ignored/local artifacts such as legacy `phase*-plan.json` files.
+- Added a structured antivirus false-positive issue template.
+
 ## 1.0.0-rc.4
 
 - Fixed `github-bootstrap.ps1` under Windows PowerShell 5.1 + StrictMode when a PowerShell child script succeeds without ever creating `$LASTEXITCODE`.

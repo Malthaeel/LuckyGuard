@@ -1,0 +1,20 @@
+# Normalize repository text deterministically and avoid platform-dependent mass line-ending churn.
+* text=auto eol=lf
+
+# Windows command entrypoints are kept CRLF for maximum cmd.exe compatibility.
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# Binary files
+*.exe binary
+*.dll binary
+*.sys binary
+*.zip binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
+*.pfx binary
+*.p12 binary
+*.sig binary

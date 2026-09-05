@@ -1,6 +1,6 @@
-﻿{
-    "repository":  "Malthaeel/LuckyGuard",
-    "publisherSubject":  "PUBLISHER_SUBJECT",
-    "iocFeedUrl":  "https://raw.githubusercontent.com/Malthaeel/LuckyGuard/main/rules/luckyware/ioc-feed.json",
-    "iocSignatureUrl":  "https://raw.githubusercontent.com/Malthaeel/LuckyGuard/main/rules/luckyware/ioc-feed.sig"
+{
+  "repository": "Malthaeel/LuckyGuard",
+  "publisherSubject": "PUBLISHER_SUBJECT",
+  "iocFeedUrl": "https://raw.githubusercontent.com/Malthaeel/LuckyGuard/main/rules/luckyware/ioc-feed.json",
+  "iocSignatureUrl": "https://raw.githubusercontent.com/Malthaeel/LuckyGuard/main/rules/luckyware/ioc-feed.sig"
 }

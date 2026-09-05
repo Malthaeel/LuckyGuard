@@ -18,8 +18,9 @@ $packages=Join-Path $root 'artifacts\release\packages'
 $setup=Join-Path $packages 'LuckyGuard-Setup-win-x64.exe'
 $hashes=Join-Path $packages 'SHA256SUMS.txt'
 $manifestPath=Join-Path $packages 'release-manifest.json'
+$trustEvidence=Join-Path $packages 'TRUST-EVIDENCE.md'
 if(-not(Test-Path $setup)){throw 'Stable public installer alias is missing. Run signed release-public first.'}
-if(-not(Test-Path $hashes) -or -not(Test-Path $manifestPath)){throw 'Release manifest/checksums are missing.'}
+if(-not(Test-Path $hashes) -or -not(Test-Path $manifestPath) -or -not(Test-Path $trustEvidence)){throw 'Release manifest/checksums/trust evidence are missing.'}
 
 $manifest=Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 $publicConfigPath=Join-Path $root 'config\public-release.json'
@@ -50,6 +51,7 @@ foreach($pkg in @($manifest.packages)){
 }
 $files += $hashes
 $files += $manifestPath
+$files += $trustEvidence
 $files=@($files | Sort-Object -Unique)
 
 if(-not(Get-Command gh -ErrorAction SilentlyContinue)){throw 'GitHub CLI (gh) is required.'}

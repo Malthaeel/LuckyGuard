@@ -38,7 +38,7 @@ function Invoke-NativeProbe([string]$File,[string[]]$Arguments){
     }
 }
 function Assert-NoSigningSecrets([string]$Path){
-    $blockedExtensions=@('.pfx','.p12','.pvk','.key','.snk')
+    $blockedExtensions=@('.pfx','.p12','.pvk','.key','.snk','.jks','.keystore')
     $skip='\\(\.git|artifacts|bin|obj|\.vs|TestResults)\\'
     $files=@(Get-ChildItem -LiteralPath $Path -Recurse -File -Force -ErrorAction SilentlyContinue | Where-Object {$_.FullName -notmatch $skip})
     $secretFile=@($files | Where-Object {$blockedExtensions -contains $_.Extension.ToLowerInvariant()} | Select-Object -First 1)
@@ -48,7 +48,7 @@ function Assert-NoSigningSecrets([string]$Path){
         if($file.Extension -notin @('.ps1','.cmd','.json','.md','.yml','.yaml','.cs','.props','.targets','.xml','.txt','.pem','.iss','.sln','.csproj')){continue}
         try{
             $content=Get-Content -LiteralPath $file.FullName -Raw -ErrorAction Stop
-            if($content -match '-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----'){
+            if($content -match '-----BEGIN (?:RSA |EC |OPENSSH |ENCRYPTED )?PRIVATE KEY-----'){
                 throw "PEM private key material must not be committed: $($file.FullName)"
             }
         }catch [System.Management.Automation.RuntimeException]{ throw }

@@ -77,6 +77,28 @@ try {
     if (-not $releaseScript.Contains('if (-not $?) { throw ''Payload signing failed.'' }')) { throw 'Payload signing must use PowerShell command success state.' }
     if (-not $releaseScript.Contains('if (-not $?) { throw ''Installer signing failed.'' }')) { throw 'Installer signing must use PowerShell command success state.' }
     Write-Host 'Release tooling smoke test: PASS (PowerShell child-script exit-state hardening)'
+
+
+    # Public repository hygiene must cover generated output, credentials and stale phase-plan files.
+    $repoRoot = Split-Path -Parent $PSScriptRoot
+    $gitignore = Get-Content -LiteralPath (Join-Path $repoRoot '.gitignore') -Raw
+    $attributes = Get-Content -LiteralPath (Join-Path $repoRoot '.gitattributes') -Raw
+    foreach($pattern in @('**/bin/','**/obj/','artifacts/','*.pfx','*.p12','*.key','.env','*.dmp','phase*-plan.json')) {
+        if(-not $gitignore.Contains($pattern)) { throw ".gitignore public hygiene regression: missing $pattern" }
+    }
+    if($gitignore -match '(?m)^\*\.pem\s*$') { throw '.gitignore must not blanket-ignore PEM files because the pinned IOC public key is intentionally public.' }
+    if(-not $attributes.Contains('* text=auto eol=lf') -or -not $attributes.Contains('*.cmd text eol=crlf')) { throw '.gitattributes line-ending policy regression.' }
+    if(-not $readinessScript.Contains("Repository hygiene")) { throw 'public-readiness.ps1 must report repository hygiene.' }
+    Write-Host 'Release tooling smoke test: PASS (public repository ignore + line-ending policy)'
+
+    # Trust evidence must be generated from final package hashes and included in GitHub release uploads.
+    if(-not $releaseScript.Contains('generate-trust-evidence.ps1')) { throw 'release.ps1 is not generating TRUST-EVIDENCE.md.' }
+    $publishScript = Get-Content -LiteralPath (Join-Path $PSScriptRoot 'publish-github.ps1') -Raw
+    $trustScript = Get-Content -LiteralPath (Join-Path $PSScriptRoot 'generate-trust-evidence.ps1') -Raw
+    if(-not $publishScript.Contains("TRUST-EVIDENCE.md")) { throw 'publish-github.ps1 is not publishing trust evidence.' }
+    if(-not $trustScript.Contains('www.virustotal.com/gui/file/$sha')) { throw 'Trust evidence is missing VirusTotal SHA-256 lookup URLs.' }
+    if(-not $trustScript.Contains('Get-AuthenticodeSignature')) { throw 'Trust evidence is missing Authenticode verification.' }
+    Write-Host 'Release tooling smoke test: PASS (release trust evidence + VirusTotal transparency wiring)'
 }
 finally {
     if (Test-Path -LiteralPath $tempRoot) {

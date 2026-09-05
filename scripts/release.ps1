@@ -44,13 +44,13 @@ if (Test-Path $packages) { Remove-Item -LiteralPath $packages -Recurse -Force }
 New-Item -ItemType Directory -Path $payload,$servicePayload,$packages -Force | Out-Null
 
 $forbiddenSigningFiles = @(Get-ChildItem -LiteralPath $root -Recurse -File -ErrorAction SilentlyContinue |
-    Where-Object { $_.FullName -notlike (Join-Path $root 'artifacts\*') -and $_.Extension -in @('.pfx','.p12','.pvk','.key','.snk') })
+    Where-Object { $_.FullName -notlike (Join-Path $root 'artifacts\*') -and $_.Extension -in @('.pfx','.p12','.pvk','.key','.snk','.jks','.keystore') })
 if ($forbiddenSigningFiles.Count -gt 0) {
     throw "Private signing material was found inside the repository. Move it outside the repo before releasing: $($forbiddenSigningFiles[0].FullName)"
 }
 $privatePem = Get-ChildItem -LiteralPath $root -Recurse -Filter *.pem -File -ErrorAction SilentlyContinue |
     Where-Object { $_.FullName -notlike (Join-Path $root 'artifacts\*') } |
-    Where-Object { Select-String -LiteralPath $_.FullName -Pattern 'BEGIN (EC |RSA |ENCRYPTED )?PRIVATE KEY' -Quiet -ErrorAction SilentlyContinue } |
+    Where-Object { Select-String -LiteralPath $_.FullName -Pattern 'BEGIN (EC |RSA |OPENSSH |ENCRYPTED )?PRIVATE KEY' -Quiet -ErrorAction SilentlyContinue } |
     Select-Object -First 1
 if ($privatePem) { throw "Private-key PEM material was found inside the repository: $($privatePem.FullName)" }
 
@@ -174,7 +174,11 @@ try {
             }
         })
     }
-    $manifest | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath (Join-Path $packages 'release-manifest.json') -Encoding utf8
+    $manifestPath = Join-Path $packages 'release-manifest.json'
+    $manifest | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $manifestPath -Encoding utf8
+
+    & (Join-Path $PSScriptRoot 'generate-trust-evidence.ps1') -PackagesDirectory $packages
+    if (-not $?) { throw 'Trust evidence generation failed.' }
 
     Write-Host ''
     Write-Host 'Release completed.'

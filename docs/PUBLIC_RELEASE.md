@@ -1,6 +1,6 @@
 # LuckyGuard public release model
 
-LuckyGuard 1.0.0-rc.4 is the final public-release candidate before the stable 1.0 tag.
+LuckyGuard 1.0.0-rc.5 is the final public-release candidate before the stable 1.0 tag.
 
 ## Public-ready gates
 
@@ -12,9 +12,11 @@ Do **not** label a release stable/public-trusted until all of these pass on a cl
 4. Archive regression passes.
 5. `scripts\release-public.cmd` produces a signed installer.
 6. `Get-AuthenticodeSignature` reports `Valid` for `LuckyGuard-Setup-win-x64.exe`.
-7. `SHA256SUMS.txt` matches every uploaded package.
-8. `install.ps1` is configured with the exact GitHub repository and expected Authenticode publisher subject.
-9. Fresh-VM install/uninstall test passes.
+7. `SHA256SUMS.txt` and `release-manifest.json` match every final signed package.
+8. `TRUST-EVIDENCE.md` is generated from the frozen package hashes and contains Authenticode + VirusTotal hash lookup evidence.
+9. The final signed installer/portable artifacts are submitted to VirusTotal; links resolve to the exact SHA-256 published by LuckyGuard.
+10. `install.ps1` is configured with the exact GitHub repository and expected Authenticode publisher subject.
+11. Fresh-VM install/uninstall test passes.
 
 Until the signing identity is configured, LuckyGuard should be described as a **development/public-beta candidate**, not a trusted public release.
 
@@ -42,14 +44,14 @@ The repository-root `install.ps1` resolves the latest published GitHub Release, 
 Configure the GitHub repository first; the signing identity can be attached later:
 
 ```powershell
-.\scripts\configure-public.cmd -Repository "YOUR_GITHUB_NAME/LuckyGuard"
+.\scripts\configure-public.cmd -Repository "Malthaeel/LuckyGuard"
 ```
 
 After a trusted code-signing certificate or service is available, attach its exact Authenticode subject without changing the repository metadata:
 
 ```powershell
 .\scripts\configure-public.cmd `
-  -Repository "YOUR_GITHUB_NAME/LuckyGuard" `
+  -Repository "Malthaeel/LuckyGuard" `
   -PublisherSubject "CN=YOUR VERIFIED PUBLISHER NAME"
 ```
 
@@ -58,7 +60,7 @@ For a fresh public repository, `scripts\github-bootstrap.cmd` can detect the aut
 Convenience install command after configuration:
 
 ```powershell
-irm https://raw.githubusercontent.com/YOUR_GITHUB_NAME/LuckyGuard/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/Malthaeel/LuckyGuard/main/install.ps1 | iex
 ```
 
 ### Trust warning
@@ -79,7 +81,7 @@ GitHub supports direct links to an asset on the latest release using `/releases/
 After a signed local release is built:
 
 ```powershell
-.\scripts\publish-github.cmd -Repository "OWNER/LuckyGuard"
+.\scripts\publish-github.cmd -Repository "Malthaeel/LuckyGuard"
 ```
 
 This requires the GitHub CLI (`gh`) to already be authenticated. The publish script refuses to upload a public installer whose Authenticode status is not `Valid`.
@@ -101,3 +103,10 @@ Start Menu shortcut command-line quoting uses Inno Setup doubled-quote syntax an
 ## 1.0 repository security
 
 The public repository also includes CodeQL v4, dependency review, Dependabot, private-security-report guidance, an RC/stable publish guard, stale-artifact cleanup, and post-upload GitHub asset digest verification.
+
+
+## Antivirus transparency
+
+Do not submit unsigned/pre-signing builds as the canonical VirusTotal evidence for a stable release. Authenticode signing changes the executable hash. Generate release evidence only after final packaging/signing, submit those exact bytes to VirusTotal, and publish the resulting SHA-256 lookup in `TRUST-EVIDENCE.md`.
+
+VirusTotal is an additional transparency signal, not a substitute for SHA-256, Authenticode, source review or GitHub release digest verification.

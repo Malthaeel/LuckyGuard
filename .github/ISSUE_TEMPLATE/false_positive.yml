@@ -1,0 +1,68 @@
+name: Antivirus false positive
+description: Report a suspected antivirus/EDR false positive for an official LuckyGuard artifact
+title: "[False Positive] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Only report official LuckyGuard artifacts from `Malthaeel/LuckyGuard`. Do not upload live malware, credentials, tokens, quarantine contents, or unrelated private files.
+        Verify the artifact hash and Authenticode signature before submitting this form.
+  - type: input
+    id: version
+    attributes:
+      label: LuckyGuard version
+      placeholder: "1.0.0"
+    validations:
+      required: true
+  - type: input
+    id: filename
+    attributes:
+      label: Artifact filename
+      placeholder: "LuckyGuard-Setup-win-x64.exe"
+    validations:
+      required: true
+  - type: input
+    id: sha256
+    attributes:
+      label: SHA-256
+      description: Exact 64-character SHA-256 of the detected file.
+      placeholder: "0123456789abcdef..."
+    validations:
+      required: true
+  - type: input
+    id: engine
+    attributes:
+      label: Antivirus / EDR engine
+      placeholder: "Microsoft Defender / Vendor name"
+    validations:
+      required: true
+  - type: input
+    id: detection
+    attributes:
+      label: Detection name
+      placeholder: "Exact detection/family/heuristic name"
+    validations:
+      required: true
+  - type: input
+    id: virustotal
+    attributes:
+      label: VirusTotal report URL
+      placeholder: "https://www.virustotal.com/gui/file/<sha256>"
+  - type: dropdown
+    id: signature
+    attributes:
+      label: Authenticode status
+      options:
+        - Valid and publisher matches official release
+        - NotSigned
+        - Invalid / HashMismatch / UnknownError
+        - Not checked
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: What action triggered the alert? Include sanitized screenshots/logs if useful.
+    validations:
+      required: true

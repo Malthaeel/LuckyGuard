@@ -1,18 +1,102 @@
-bin/
-obj/
-.vs/
-.idea/
-*.user
-*.suo
-TestResults/
-artifacts/
-*.log
+# LuckyGuard public repository ignore policy
+# Keep generated output, machine-local state, credentials and signing material out of Git.
 
-# Signing credentials / local release metadata
+# .NET / build / publish output
+**/bin/
+**/obj/
+artifacts/
+publish/
+out/
+dist/
+packages/
+TestResults/
+coverage/
+.coverage/
+*.trx
+*.coverage
+*.coveragexml
+*.cobertura.xml
+*.binlog
+*.nupkg
+*.snupkg
+
+# Visual Studio / Rider / VS Code user state
+.vs/
+.vscode/
+.idea/
+_ReSharper*/
+*.suo
+*.user
+*.rsuser
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+*.VC.db
+*.VC.VC.opendb
+ipch/
+
+# Logs / diagnostics / temporary files
+*.log
+*.etl
+*.dmp
+*.dump
+*.tmp
+*.temp
+*.bak
+*.old
+*.orig
+*.rej
+*.pid
+*.lock
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+Desktop.ini
+*~
+*.swp
+*.swo
+
+# Local environment / credentials / tokens
+.env
+.env.*
+!.env.example
+*.secret
+*.secrets.json
+*.token
+*.tokens
+credentials*.json
+service-account*.json
+id_rsa
+id_rsa.*
+id_ed25519
+id_ed25519.*
+
+# Signing credentials and private key containers
+# Public verification material (for example rules/**/ioc-public-key.pem) is intentionally tracked.
 *.pfx
 *.p12
 *.pvk
 *.key
 *.snk
+*.jks
+*.keystore
 release/metadata.json
 release/artifact-signing.metadata.json
+
+# LuckyGuard machine-local runtime state (never source-controlled)
+LuckyGuardData/
+quarantine/
+reports/
+logs/
+guard.jsonl
+guard-service.jsonl
+service-config.json
+
+# Historical/local planning artifacts accidentally left by older development phases
+phase*-plan.json
+
+# Installer/compiler scratch output
+release/Output/
+release/output/
+*.iss.tmp

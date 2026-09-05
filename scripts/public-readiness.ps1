@@ -73,6 +73,31 @@ if($repoOk -and $gitCmd -and (Test-Path (Join-Path $root '.git'))){
         }
     }finally{Pop-Location}
 }
+$hygieneOk=$false
+$hygieneDetail='git repository not available'
+if($gitCmd -and (Test-Path (Join-Path $root '.git'))){
+    Push-Location $root
+    try{
+        $ignoredProbe=Invoke-NativeProbe $gitCmd.Source @('ls-files','-ci','--exclude-standard')
+        $trackedIgnored=@($ignoredProbe.StdOut -split "`r?`n" | Where-Object { $_ })
+        $privateContainers=@(Get-ChildItem -LiteralPath $root -Recurse -File -ErrorAction SilentlyContinue |
+            Where-Object { $_.FullName -notlike (Join-Path $root '.git\*') -and $_.FullName -notlike (Join-Path $root 'artifacts\*') } |
+            Where-Object { $_.Extension -in @('.pfx','.p12','.pvk','.key','.snk','.jks','.keystore') })
+        $privatePem=@(Get-ChildItem -LiteralPath $root -Recurse -Filter *.pem -File -ErrorAction SilentlyContinue |
+            Where-Object { Select-String -LiteralPath $_.FullName -Pattern 'BEGIN (EC |RSA |OPENSSH |ENCRYPTED )?PRIVATE KEY' -Quiet -ErrorAction SilentlyContinue })
+        $hygieneOk=$ignoredProbe.ExitCode -eq 0 -and $trackedIgnored.Count -eq 0 -and $privateContainers.Count -eq 0 -and $privatePem.Count -eq 0
+        if($hygieneOk){
+            $hygieneDetail='no tracked ignored files or private signing material'
+        }elseif($privateContainers.Count -gt 0 -or $privatePem.Count -gt 0){
+            $hygieneDetail='private/signing material found in working tree'
+        }elseif($trackedIgnored.Count -gt 0){
+            $preview=($trackedIgnored | Select-Object -First 3) -join ', '
+            $hygieneDetail="tracked files now match .gitignore: $preview"
+        }else{
+            $hygieneDetail='git hygiene probe failed'
+        }
+    }finally{Pop-Location}
+}
 $signtoolOk=$null -ne (Get-Command signtool.exe -ErrorAction SilentlyContinue)
 if(-not $signtoolOk -and ${env:ProgramFiles(x86)}){
     $kits=Join-Path ${env:ProgramFiles(x86)} 'Windows Kits\10\bin'
@@ -99,6 +124,7 @@ $results=@(
     (Check 'Repository configured' $repoOk $(if($config){[string]$config.repository}else{'config missing'})),
     (Check 'Official IOC URLs' $iocOk $iocDetail),
     (Check 'Git origin matches' $remoteOk $remoteDetail),
+    (Check 'Repository hygiene' $hygieneOk $hygieneDetail),
     (Check 'Publisher configured' $publisherOk $(if($config){[string]$config.publisherSubject}else{'config missing'})),
     (Check 'Inno Setup' $innoOk 'installer compiler'),
     (Check 'SignTool' $signtoolOk 'Windows SDK signing tool'),
@@ -110,7 +136,7 @@ $blocked=@($results | Where-Object {-not $_}).Count
 Write-Host ''
 if($blocked -eq 0){Write-Host 'PUBLIC RELEASE TOOLING: READY' -ForegroundColor Green; exit 0}
 Write-Host "PUBLIC RELEASE TOOLING: $blocked blocker(s) remain" -ForegroundColor Yellow
-if($repoOk -and $iocOk -and $remoteOk -and $ghOk -and $ghAuthOk){
+if($repoOk -and $iocOk -and $remoteOk -and $hygieneOk -and $ghOk -and $ghAuthOk){
     Write-Host 'GitHub repository track: READY. Remaining signing blockers do not prevent RC source publication.' -ForegroundColor Cyan
 }
 exit 2

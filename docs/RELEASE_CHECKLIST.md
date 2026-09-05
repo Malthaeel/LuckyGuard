@@ -23,6 +23,9 @@
 - [ ] `Get-AuthenticodeSignature` is `Valid` for the stable installer alias.
 - [ ] Timestamp is present and valid.
 - [ ] `SHA256SUMS.txt` and `release-manifest.json` match the final signed artifacts.
+- [ ] `TRUST-EVIDENCE.md` is generated from the final package bytes.
+- [ ] Final signed installer and portable package are submitted to VirusTotal; published report links correspond to the exact release SHA-256 values.
+- [ ] Suspected false positives are submitted to affected vendors (Microsoft Security Intelligence for Defender detections) before/alongside stable announcement when practical.
 - [ ] Publish through `scripts\publish-github.cmd` and require its post-upload GitHub digest verification to pass.
 - [ ] Test `install.ps1` from a clean Windows VM/user profile.
 - [ ] Test `luckyguard update check` and `luckyguard ioc update` against the public repository.

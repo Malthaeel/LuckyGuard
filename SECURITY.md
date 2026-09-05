@@ -58,3 +58,8 @@ Do not submit live malware samples to the repository. Use inert/synthetic fixtur
 - Release output is cleaned before each build so stale packages from older versions cannot be accidentally published.
 - GitHub publishing uploads only files named by the current release manifest, then reads the release back and verifies every GitHub asset digest against the local file.
 - RC versions cannot be accidentally published as a stable GitHub release by the provided publish script.
+
+
+## Antivirus false positives and release verification
+
+For release hashes, Authenticode checks, VirusTotal transparency and false-positive reporting guidance, see [`docs/TRUST_AND_VERIFICATION.md`](docs/TRUST_AND_VERIFICATION.md).
